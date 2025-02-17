@@ -5,6 +5,13 @@ import threading
 import wx.richtext
 import datetime
 
+def show_error(e: Exception):
+    # Create a wx.MessageDialog
+    dialog = wx.MessageDialog(None, str(e), type(e).__name__, wx.OK | wx.ICON_ERROR)
+    # Show the dialog
+    dialog.ShowModal()
+    dialog.Destroy()
+
 class WindowFrame(wx.Frame):
     def __init__(self, *args, **kwargs):
         wx.Frame.__init__(self, *args, **kwargs)
