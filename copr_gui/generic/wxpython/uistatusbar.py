@@ -5,12 +5,10 @@ import threading
 import wx.richtext
 import datetime
 
-def show_error(e: Exception):
-    # Create a wx.MessageDialog
-    dialog = wx.MessageDialog(None, str(e), type(e).__name__, wx.OK | wx.ICON_ERROR)
-    # Show the dialog
-    dialog.ShowModal()
-    dialog.Destroy()
+def error(label, window, parent=None):
+    dlg = wx.MessageDialog(parent, label, window, wx.OK | wx.ICON_ERROR)
+    dlg.ShowModal()
+    dlg.Destroy()
 
 class WindowFrame(wx.Frame):
     def __init__(self, *args, **kwargs):
@@ -82,11 +80,6 @@ def CreateApp():
 
 def InitApp(app):
     return app.MainLoop()
-
-def error(label, window, parent=None):
-    dlg = wx.MessageDialog(parent, label, window, wx.OK | wx.ICON_ERROR)
-    dlg.ShowModal()
-    dlg.Destroy()
     
 def browser(url):
     wx.LaunchDefaultBrowser(url)
