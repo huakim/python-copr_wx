@@ -1,2 +1,2 @@
-include variant.txt
+include variant.py
 include .copr/Makefile
