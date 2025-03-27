@@ -1,3 +1,3 @@
-value='wxpython'
+name='wxpython'
 urlval='wx'
 
