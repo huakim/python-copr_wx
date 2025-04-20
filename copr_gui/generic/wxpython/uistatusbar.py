@@ -1,4 +1,3 @@
-#uistatusbar.py
 import wx
 import time
 import threading

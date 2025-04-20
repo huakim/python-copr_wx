@@ -1,9 +1,3 @@
-'''
-
-
-i have the following code. how can i add feauture to copy element with ctrl+c?
-```
-#'''
 import wx
 from .uistatusbar import WindowFrame
 import wx.grid as gridlib
