@@ -148,17 +148,19 @@ class TableModel(gridlib.GridTableBase):
             attr.SetReadOnly(True)
         return attr
 
+    def RestoreLastSort(self):
+        self.data.sort(key=lambda x: x[self.sort_col], reverse=self.sort_reverse)
+        msg = gridlib.GridTableMessage(self, gridlib.GRIDTABLE_REQUEST_VIEW_GET_VALUES)
+        view = self.GetView()
+        view.ProcessTableMessage(msg)
+
     def SortByColumn(self, col):
         if self.sort_col == col:
             self.sort_reverse = not self.sort_reverse
         else:
             self.sort_col = col
             self.sort_reverse = False
-
-        self.data.sort(key=lambda x: x[col], reverse=self.sort_reverse)
-        msg = gridlib.GridTableMessage(self, gridlib.GRIDTABLE_REQUEST_VIEW_GET_VALUES)
-        view = self.GetView()
-        view.ProcessTableMessage(msg)
+        self.RestoreLastSort()
 
 # Custom renderer class to format date integers as dates
 class DateCellRenderer(gridlib.PyGridCellRenderer):
