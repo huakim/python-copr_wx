@@ -143,7 +143,7 @@ class TableModel(gridlib.GridTableBase):
         return attr
 
     def RestoreLastSort(self):
-        if sort_col is None:
+        if self.sort_col is None:
             return
         self.data.sort(key=lambda x: x[self.sort_col], reverse=self.sort_reverse)
         msg = gridlib.GridTableMessage(self, gridlib.GRIDTABLE_REQUEST_VIEW_GET_VALUES)
